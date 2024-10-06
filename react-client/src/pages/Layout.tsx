@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 interface LayoutProps {
     children: ReactNode;
@@ -7,10 +8,13 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
-        <div className="container">
+        <>
             <Navbar />
-            {children}
-        </div>
+            <div className="bg-light" style={{ padding: "20px 100px" }}>
+                {children}
+            </div>
+            <Footer />
+        </>
     );
 };
 

@@ -5,12 +5,14 @@ interface CartState {
     cart: {
         product: any,
         quantity: number,
-        price: number
+        price: number,
+        sku: string,
     }[],
     total: number,
     setCart: (product: any) => void,
     setTotal: () => void,
-    remove: (index: number) => void
+    remove: (index: number) => void,
+    updateQuantity: (index: number, newQuantity: number) => void
 }
 
 const useCartStore = create<CartState>()(
@@ -22,7 +24,12 @@ const useCartStore = create<CartState>()(
             setTotal: () => set({
                 total: get().cart.reduce((acc: any, cartOtem: any) => acc + cartOtem.price * cartOtem.quantity, 0)
             }),
-            remove: (index: number) => set({ cart: get().cart.filter((_: any, i: number) => i !== index) })
+            remove: (index: number) => set({ cart: get().cart.filter((_: any, i: number) => i !== index) }),
+            updateQuantity: (index: number, newQuantity: number) => set((state) => {
+                const updatedCart = [...state.cart];
+                updatedCart[index].quantity = newQuantity;
+                return { cart: updatedCart };
+            }),
         }),
         {
             name: "cart",

@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <div className="inter-normal" style={{ background: '#222222', height: '100vh' }}>
+      <App />
+    </div>
   </React.StrictMode>,
 )

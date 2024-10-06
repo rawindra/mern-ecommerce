@@ -21,7 +21,7 @@ const ProductDetail = () => {
     const { token } = useAuthStore();
     const location = useLocation();
     const navigate = useNavigate();
-    const { setCart, setTotal } = useCartStore();
+    const { cart, setCart, setTotal } = useCartStore();
 
     const { id } = useParams();
 
@@ -48,10 +48,20 @@ const ProductDetail = () => {
         if (!token) {
             return navigate('/login', { replace: true, state: { from: location } });
         }
+        if (cart.length > 0) {
+            const existingCartItem = cart.find(item => item.sku === selectedVariant.sku);
+            if (existingCartItem) {
+                return errorToast("Product already in cart");
+            }
+        }
+
         const cartItem = {
             product: product,
             quantity: quantity,
-            price: product.productType === 'variant' ? selectedVariant.price : product.price
+            price: product.productType === 'variant' ? selectedVariant.price : product.price,
+            variant: product.productType === 'variant' ? selectedVariant : null,
+            stock: product.productType === 'variant' ? selectedVariant.stock : product.stock,
+            sku: product.productType === 'variant' ? selectedVariant.sku : product.sku
         }
 
         setCart(cartItem);
@@ -79,8 +89,6 @@ const ProductDetail = () => {
                                 {product?.name}
                             </div>
                             <div className="price-area my-2">
-                                {/* <p className="old-price mb-1"> */}
-                                {/* <del>$100</del> <span className="old-price-discount text-danger">(20% off)</span></p> */}
                                 {product.productType !== 'variant' ? (
                                     <p className="new-price text-bold mb-1">Rs {product?.price}</p>
                                 ) : (

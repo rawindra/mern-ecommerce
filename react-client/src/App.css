@@ -1,3 +1,10 @@
+.inter-normal {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .text-bold {
   font-weight: 800;
 }
@@ -51,7 +58,6 @@ text-color {
 
 }
 
-
 .custom-btn {
   text-transform: capitalize;
   background-color: #c45f00 !important;
@@ -90,6 +96,58 @@ text-color {
 .questions-icon {
   font-size: 2rem;
   color: #0093c4;
+}
+
+.product-card {
+  border: none !important;
+  box-shadow: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.banner {
+  font-family: 'Arial', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.social-link {
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #ddd;
+}
+
+.contact-number {
+  margin-left: 20px;
+  font-size: 16px;
+  color: chocolate;
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    justify-content: center;
+    margin-top: 10px;
+  }
 }
 
 
