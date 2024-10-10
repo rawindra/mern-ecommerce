@@ -37,6 +37,9 @@ const OrderSchema = new Schema(
             price: {
                 type: Number,
                 required: true
+            },
+            variant: {
+                attribute: {}
             }
         }],
         total: {

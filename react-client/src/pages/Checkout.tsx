@@ -49,6 +49,8 @@ const Checkout = () => {
         data.items = cart;
         data.total = total;
 
+        console.log(data);
+
         httpClient.post("/users/order/create", data)
             .then(() => {
                 createdToast("Order");

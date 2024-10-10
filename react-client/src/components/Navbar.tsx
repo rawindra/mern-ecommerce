@@ -11,6 +11,8 @@ const Navbar = () => {
 
     const { cart, updateQuantity, total, setTotal, remove } = useCartStore();
 
+    const auth = localStorage.getItem("auth");
+
     const logout = () => {
         localStorage.removeItem("auth")
         navigate("/")
@@ -43,6 +45,7 @@ const Navbar = () => {
                     </div>
                     <Nav>
                         <div className="d-flex gap-2">
+                            {auth && <Link to="/orders" className="btn btn-link text-white text-decoration-none">Orders</Link>}
                             <button type="button" className="btn btn-link position-relative" onClick={handleShow}>
                                 <FaCartPlus className="text-white" />
                                 <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style={{ top: "8px" }}>
@@ -50,7 +53,13 @@ const Navbar = () => {
                                     <span className="visually-hidden">cart items</span>
                                 </span>
                             </button>
-                            <button className="btn btn-link" onClick={logout}><FaPowerOff className="text-danger" onClick={logout} /></button>
+                            {auth
+                                ?
+                                <button className="btn btn-link" onClick={logout}><FaPowerOff className="text-danger" onClick={logout} /></button>
+                                :
+                                <button className="btn btn-link" onClick={() => navigate("/login")}>Login</button>
+                            }
+
                         </div>
                     </Nav>
                 </Container>

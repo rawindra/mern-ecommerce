@@ -7,6 +7,7 @@ interface CartState {
         quantity: number,
         price: number,
         sku: string,
+        variant: any
     }[],
     total: number,
     setCart: (product: any) => void,
