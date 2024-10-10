@@ -8,13 +8,13 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
-        <>
+        <div className="min-vh-100">
             <Navbar />
             <div className="bg-light" style={{ padding: "20px 100px" }}>
                 {children}
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 
