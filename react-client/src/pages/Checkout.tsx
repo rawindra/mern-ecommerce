@@ -82,7 +82,7 @@ const Checkout = () => {
                             <div className="form-group">
                                 <label htmlFor="">Patment Method</label>
                                 <select className="form-control" {...register("paymentMethod")}>
-                                    <option value="cash">Cash On Delivery</option>
+                                    <option value="cod">Cash On Delivery</option>
                                 </select>
                                 <p className="text-danger">{errors.paymentMethod?.message}</p>
                             </div>

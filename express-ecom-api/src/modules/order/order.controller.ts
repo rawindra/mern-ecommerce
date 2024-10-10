@@ -25,15 +25,15 @@ class OrderController {
 
                 if (!req.user) throw new Error('USER_NOT_FOUND');
 
-                const { phoneNumber, address, items, total } = req.body;
+                const { fullName, phoneNumber, shippingAddress, paymentMethod, items, total } = req.body;
 
-                const order = await this.orderClass.createOrder(req.user?._id, items, total);
+                const order = await this.orderClass.createOrder(req.user?._id, fullName, phoneNumber, shippingAddress, paymentMethod, items, total);
 
                 if (!order) throw new Error('ORDER_NOT_CREATED');
 
-                const user = await this.orderClass.updateUser(req.user?._id, phoneNumber, address);
+                // const user = await this.orderClass.updateUser(req.user?._id, phoneNumber, address);
 
-                if (!user) throw new Error('USER_NOT_UPDATED');
+                // if (!user) throw new Error('USER_NOT_UPDATED');
 
 
                 for (const item of items) {

@@ -7,6 +7,23 @@ const OrderSchema = new Schema(
             ref: 'User',
             required: true
         },
+        fullName: {
+            type: String,
+            required: true
+        },
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        shippingAddress: {
+            type: String,
+            required: true
+        },
+        paymentMethod: {
+            type: String,
+            enum: ['cod', 'esewa', 'khalti'],
+            default: 'cod'
+        },
         items: [{
             product: {
                 type: Schema.Types.ObjectId,

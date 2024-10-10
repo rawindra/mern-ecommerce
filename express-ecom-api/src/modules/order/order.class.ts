@@ -16,9 +16,13 @@ class Order {
         return user;
     }
 
-    async createOrder(userId: any, items: any, total: any) {
+    async createOrder(userId: any, fullName: string, phoneNumber: string, shippingAddress: string, paymentMethod: string, items: any, total: any) {
         const order = new OrderModel({
             user: userId,
+            fullName,
+            phoneNumber,
+            shippingAddress,
+            paymentMethod,
             items,
             total
         });
